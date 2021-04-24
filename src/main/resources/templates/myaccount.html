@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Banks - My Account</title>
+</head>
+<body>
+    <span th:if="${user != null}">
+        <tr th:if="${operations == null} or ${#lists.isEmpty(operations)}">
+            <h1>Hello <span th:text="${user.username}"/> ! Your balance is : <span th:text="${user.balance}"/></h1>
+            <h2> No Operation available </h2>
+        </tr>
+        <tr th:if="${operations != null} or ${not #lists.isEmpty(operations)}">
+        <h1>Hello <span th:text="${user.username}"/> ! Your balance is : <span th:text="${user.balance}"/></h1>
+            <table>
+                <thead>
+                    <tr>
+                         <th> Type </th>
+                        <th> Value </th>
+                        <th> Date </th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr th:each="operation : ${operations}">
+                    <td><span th:text="${operation.type}"> Type </span></td>
+                    <td><span th:text="${operation.value}"> Value </span></td>
+                    <td><span th:text="${operation.date}"> Date </span></td>
+                </tr>
+                </tbody>
+            </table>
+        </tr>
+        </span>
+    </span>
+    <span th:if="${user == null}">
+        <h1>No account found !</h1>
+    </span>
+</body>
+</html>

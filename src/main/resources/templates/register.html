@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Banks - Register</title>
+</head>
+<body>
+<h1>Register page</h1>
+<form th:action="@{/complete}" th:object="${form}" method="post">
+    <label for="username">Username</label>:
+    <input th:field="*{username}" type="text" id="username" name="username" autofocus="autofocus" /><br />
+    <label for="password">Password</label>:
+    <input th:field="*{password}" type="password" id="password" name="password" /> <br />
+  <input type="submit" value="Register" />
+</form>
+</body>
+</html>
