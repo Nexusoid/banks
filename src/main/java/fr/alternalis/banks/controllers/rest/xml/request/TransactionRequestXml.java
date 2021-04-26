@@ -3,12 +3,21 @@ package fr.alternalis.banks.controllers.rest.xml.request;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
+/**
+ * XML representation of a transaction request.
+ */
 @JacksonXmlRootElement
 public class TransactionRequestXml {
 
+    /**
+     * @param username is the name linked to the user account.
+     */
     @JacksonXmlProperty
     private String username;
 
+    /**
+     * @param value is the value that need to be added/subtracted to the account.
+     */
     @JacksonXmlProperty
     private String value;
 

@@ -2,21 +2,36 @@ package fr.alternalis.banks.entities;
 
 import javax.persistence.*;
 
+/**
+ * Entity of a user.
+ */
 @Entity
 @Table(name = "User")
 public class User {
 
+    /**
+     * @param userId of the user.
+     */
     @Id
     @Column(name = "USERID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userId;
 
+    /**
+     * @param username of the user.
+     */
     @Column(name = "USERNAME", length = 60, unique = true)
     private String username;
 
+    /**
+     * @param password of the user.
+     */
     @Column(name = "PASSWORD")
     private String password;
 
+    /**
+     * @param balance of the user.
+     */
     @Column(name = "BALANCE", scale = 2)
     private Double balance;
 

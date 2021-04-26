@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Controller responsible for the JSON rest service.
+ */
 @RestController
 @RequestMapping("/rest/json/user")
 public class BanksJsonRestController {
@@ -30,6 +33,11 @@ public class BanksJsonRestController {
         this.userService = userService;
     }
 
+    /**
+     * Function that return the balance of an account.
+     * @param request contain the username of the needed account.
+     * @return A ResponseEntity containing the value of the balance for the account, or an error.
+     */
     @GetMapping(value = "/balance", consumes="application/json", produces = "application/json")
     public ResponseEntity<?> getUserAmount(@RequestBody BalanceRequestJson request){
         UserDTO user = userService.getUserByUsername(request.getUsername());
@@ -40,6 +48,11 @@ public class BanksJsonRestController {
         }
     }
 
+    /**
+     * Function that return the operation(s) for an account.
+     * @param request contain the username of the needed account and the number of needed operation(s).
+     * @return A ResponseEntity containing the operation(s), or an error.
+     */
     @GetMapping(value = "/operations", consumes = "application/json", produces = "application/json")
     public ResponseEntity<?> getUserOperations(@RequestBody OperationsRequestJson request){
         int numberOps;

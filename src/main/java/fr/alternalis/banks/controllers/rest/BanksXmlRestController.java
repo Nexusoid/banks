@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controller responsible for the XML rest service.
+ */
 @RestController
 @RequestMapping("/rest/xml/user")
 public class BanksXmlRestController {
@@ -27,6 +30,11 @@ public class BanksXmlRestController {
         this.userService = userService;
     }
 
+    /**
+     * Function that effectuate an operation for an account.
+     * @param request contain the username of the needed account and the value of the transaction.
+     * @return A ResponseEntity that contain an error, or the information that the operation has been made.
+     */
     @PostMapping(value="/transaction", consumes="application/xml", produces="application/xml")
     public ResponseEntity<?> makeUserTransaction(@RequestBody TransactionRequestXml request){
         UserDTO user = userService.getUserByUsername(request.getUsername());

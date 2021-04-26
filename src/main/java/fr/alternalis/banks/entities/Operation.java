@@ -5,25 +5,43 @@ import fr.alternalis.banks.enums.OperationType;
 import javax.persistence.*;
 import java.time.LocalDate;
 
+/**
+ * Entity of an operation.
+ */
 @Entity
 @Table(name = "OPERATION")
 public class Operation {
 
+    /**
+     * @param id of the operation.
+     */
     @Id
     @Column(name = "OPERATIONID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    /**
+     * @param user linked to the operation.
+     */
     @ManyToOne
     @JoinColumn(name = "USER", referencedColumnName = "USERID")
     private User user;
 
+    /**
+     * @param type of the operation.
+     */
     @Column(name = "TYPE")
     private OperationType type;
 
+    /**
+     * @param value of the operation.
+     */
     @Column(name = "VALUE", scale = 2)
     private Double value;
 
+    /**
+     * @param date of the operation.
+     */
     @Column(name = "DATE")
     private LocalDate date;
 

@@ -1,13 +1,28 @@
 package fr.alternalis.banks.dtos;
 
+/**
+ * DTO of the User entity.
+ */
 public class UserDTO {
 
+    /**
+     * @param idUser of the user.
+     */
     private Long idUser;
 
+    /**
+     * @param username of the user.
+     */
     private String username;
 
+    /**
+     * @param password of the user.
+     */
     private String password;
 
+    /**
+     * @param balance of the user.
+     */
     private Double balance;
 
     public Long getIdUser() {

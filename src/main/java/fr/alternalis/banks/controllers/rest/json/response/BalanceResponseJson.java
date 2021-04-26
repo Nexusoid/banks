@@ -1,11 +1,13 @@
 package fr.alternalis.banks.controllers.rest.json.response;
 
-import fr.alternalis.banks.dtos.OperationDTO;
-
-import java.util.List;
-
+/**
+ * Representation of the JSON response for a balance request.
+ */
 public class BalanceResponseJson {
 
+    /**
+     * @param balance is the balance of the requested user.
+     */
     private Double balance;
 
     public BalanceResponseJson(Double balance){

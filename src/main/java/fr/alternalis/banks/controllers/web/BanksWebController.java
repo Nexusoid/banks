@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Controller responsible for the banks website.
+ */
 @Controller
 public class BanksWebController {
 
@@ -25,18 +28,34 @@ public class BanksWebController {
         this.operationService = operationService;
     }
 
+    /**
+     * Function that send the login page.
+     * @param model associated to the page.
+     * @return the page itself.
+     */
     @GetMapping("/login")
     public String login(Model model) {
         model.addAttribute("form", new UserForm());
         return "login";
     }
 
+    /**
+     * Function that send the register page.
+     * @param model associated to the page.
+     * @return the page itself.
+     */
     @GetMapping("/register")
     public String register(Model model) {
         model.addAttribute("form", new UserForm());
         return "register";
     }
 
+    /**
+     * Function that send the myaccount page.
+     * @param form containing the user information.
+     * @param model associated to the page.
+     * @return the page itself.
+     */
     @PostMapping("/myaccount")
     public String myaccount(@ModelAttribute UserForm form, Model model) {
         UserDTO user = userService.getUserByUsername(form.getUsername());
@@ -52,12 +71,25 @@ public class BanksWebController {
         return "myaccount";
     }
 
+    /**
+     * Function that send the complete page.
+     * @param form containing the user information.
+     * @param model associated to the page.
+     * @return the page itself.
+     */
     @PostMapping("/complete")
     public String complete(@ModelAttribute UserForm form, Model model){
-        userService.registerUser(form.getUsername(), form.getPassword());
-        return "complete";
+        if(userService.registerUser(form.getUsername(), form.getPassword())){
+            return "complete";
+        } else {
+            return "index";
+        }
     }
 
+    /**
+     * Function that send the index page.
+     * @return the page itself.
+     */
     @GetMapping("/")
     public String index() {
         return "index";

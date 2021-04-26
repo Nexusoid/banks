@@ -3,12 +3,21 @@ package fr.alternalis.banks.controllers.rest.xml.response;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
+/**
+ * Representation of the XML response for a standard request.
+ */
 @JacksonXmlRootElement
 public class ResponseXml {
 
+    /**
+     * @param value is the code of the response.
+     */
     @JacksonXmlProperty
     private Integer value;
 
+    /**
+     * @param information is the explanation of the response.
+     */
     @JacksonXmlProperty
     private String information;
 

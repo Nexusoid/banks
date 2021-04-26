@@ -9,9 +9,18 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * Repository associated to the Operation entity.
+ */
 @Repository
 public interface IOperationRepository extends JpaRepository<Operation, Long> {
 
+    /**
+     * Function that return the last operation(s) for a user from database.
+     * @param number of needed operation(s).
+     * @param user for which we need the operation(s).
+     * @return A List of Operation containing all needed operations.
+     */
     @Query(nativeQuery = true,
             value = "SELECT * "
            + "FROM Operation o "

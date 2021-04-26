@@ -4,14 +4,29 @@ import fr.alternalis.banks.enums.OperationType;
 
 import java.time.LocalDate;
 
+/**
+ * DTO of the Operation entity.
+ */
 public class OperationDTO {
 
+    /**
+     * @param id of the operation.
+     */
     private Long id;
 
+    /**
+     * @param type of the operation.
+     */
     private OperationType type;
 
+    /**
+     * @param value of the operation.
+     */
     private Double value;
 
+    /**
+     * @param date of the operation.
+     */
     private LocalDate date;
 
     public Long getId() {

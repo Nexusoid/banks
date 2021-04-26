@@ -4,8 +4,14 @@ import fr.alternalis.banks.dtos.OperationDTO;
 
 import java.util.List;
 
+/**
+ * Representation of the JSON response for an operation request.
+ */
 public class OperationsResponseJson {
 
+    /**
+     * @param operations is the list of the operations associated to the requested user.
+     */
     private List<OperationDTO> operations;
 
     public OperationsResponseJson(List<OperationDTO> operations){
