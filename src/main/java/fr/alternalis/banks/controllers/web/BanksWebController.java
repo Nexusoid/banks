@@ -74,11 +74,10 @@ public class BanksWebController {
     /**
      * Function that send the complete page.
      * @param form containing the user information.
-     * @param model associated to the page.
      * @return the page itself.
      */
     @PostMapping("/complete")
-    public String complete(@ModelAttribute UserForm form, Model model){
+    public String complete(@ModelAttribute UserForm form){
         if(userService.registerUser(form.getUsername(), form.getPassword())){
             return "complete";
         } else {

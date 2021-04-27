@@ -38,7 +38,7 @@ public class BanksJsonRestController {
      * @param request contain the username of the needed account.
      * @return A ResponseEntity containing the value of the balance for the account, or an error.
      */
-    @GetMapping(value = "/balance", consumes="application/json", produces = "application/json")
+    @PostMapping(value = "/balance", consumes="application/json", produces = "application/json")
     public ResponseEntity<?> getUserAmount(@RequestBody BalanceRequestJson request){
         UserDTO user = userService.getUserByUsername(request.getUsername());
         if(user == null){
@@ -53,7 +53,7 @@ public class BanksJsonRestController {
      * @param request contain the username of the needed account and the number of needed operation(s).
      * @return A ResponseEntity containing the operation(s), or an error.
      */
-    @GetMapping(value = "/operations", consumes = "application/json", produces = "application/json")
+    @PostMapping(value = "/operations", consumes = "application/json", produces = "application/json")
     public ResponseEntity<?> getUserOperations(@RequestBody OperationsRequestJson request){
         int numberOps;
         try{
@@ -67,7 +67,7 @@ public class BanksJsonRestController {
             if (operations != null && !operations.isEmpty()) {
                 return new ResponseEntity<>(new OperationsResponseJson(operations), HttpStatus.OK);
             } else {
-                return new ResponseEntity<>(new ErrorResponseJson("No operation found"), HttpStatus.NOT_FOUND);
+                return new ResponseEntity<>(new ErrorResponseJson("No operation found"), HttpStatus.OK);
             }
         } else {
             return new ResponseEntity<>(new ErrorResponseJson("No user found"), HttpStatus.NOT_FOUND);

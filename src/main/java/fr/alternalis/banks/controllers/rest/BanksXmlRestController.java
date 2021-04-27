@@ -40,16 +40,16 @@ public class BanksXmlRestController {
         UserDTO user = userService.getUserByUsername(request.getUsername());
         Double value;
         if(user == null){
-            return new ResponseEntity<>(new ResponseXml(1, "No user found."), HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(new ResponseXml(1, "No user found"), HttpStatus.OK);
         } else {
             try{
                 value = Double.parseDouble(request.getValue());
             } catch (NumberFormatException e){
-                return new ResponseEntity<>(new ResponseXml(2,"Incorrect value."), HttpStatus.ACCEPTED);
+                return new ResponseEntity<>(new ResponseXml(2,"Incorrect value"), HttpStatus.OK);
             }
             userService.updateUserBalance(user.getUsername(), value);
             operationService.saveOperationForUser(user, value);
-            return new ResponseEntity<>(new ResponseXml(0, "User correctly updated."), HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(new ResponseXml(0, "User correctly updated"), HttpStatus.OK);
         }
     }
 }
